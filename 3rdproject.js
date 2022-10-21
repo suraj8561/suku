@@ -48,4 +48,8 @@ li[1].textContent='Hello-2'
 li[1].style.fontWEight='bold'
 li[1].style.backgroundcolor='yellow'
 
+
+for(var i=0;i<li.length;i++){
+    li[1].style.backgroundcolor='#f4f4f4'
+}
 // QuerySelector 
