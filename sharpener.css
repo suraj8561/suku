@@ -1,0 +1,14 @@
+h1{
+    background-color: aquamarine;
+    border: 2px solid powderblue;
+    padding: 30px;
+    margin: 30px;
+}
+pre{
+    color: blueviolet;
+    font-family: courier;
+    font-size: 160%;
+}
+p {
+    text-align: center;
+}
