@@ -85,3 +85,91 @@
 //     odd[i].style.backgroundColor='#f4f4f4'
 //     even[i].style.backgroundColor='#ccc'
 // }
+
+// TRAVERSING DOM 
+var itemList=document.querySelector('#items')
+//parentNode
+// console.log(itemList.parentNode)
+// itemList.parentNode.style.backgroundColor='#ccc'
+// console.log(itemList.parentNode.parentNode.parentNode.parentNode)
+
+// parentElement
+// console.log(itemList.parentElement)
+// itemList.parentElement.style.backgroundColor='#ccc'
+// console.log(itemList.parentElement. parentElement.parentElement.parentElement)
+
+// childNode 
+// console.log(itemList.childNodes )
+// console.log(itemList.children)
+// console.log(itemList.children[1])
+// itemList.children[1].style.backgroundColor='yellow'
+// itemList.children[1].style.color='green'
+// // firstChild 
+// console.log(itemList.firstChild);
+// //firstElementChild 
+// console.log(itemList.fisrtElementChild);
+// itemList.fisrtElementChild.textContent="Hello 1"
+
+// lastChild 
+// console.log(itemList.lastChild);
+// //lastElementChild 
+// console.log(itemList.lastElementChild);
+// itemList.lastElementChild.textContent="Hello 2"
+ 
+//  fisrtElementChild
+
+// nextsibling
+// console.log(itemList.nextSibling)
+// // nextElementSibling 
+// console.log(itemList.nextElementSibling)
+
+// previoussibling
+// console.log(itemList.previousSibling);
+// // previousElementSibling
+// console.log(itemList.previousElementSibling);
+// itemList.previousElementSibling.style.color="blue"
+
+// createelement
+
+// create a div 
+var newDiv=document.createElement("div")
+
+//add class
+newDiv.className="dude"
+
+//add id
+newDiv.id= "dude1"
+
+// add attribute
+newDiv.setAttribute('title','HEllo Div') 
+
+//create a text node
+var newDivText=document.createTextNode('HEllo World')
+// add text to Div
+newDiv.appendChild(newDivText)
+var container=document.querySelector('header .container');
+var h1=document.querySelector ('header h1')
+console.log(newDiv)
+newDiv.style.fontSize='30px'
+container.insertBefore(newDiv,h1)
+
+var newDiv=document.createElement("div")
+
+//add class
+newDiv.className="dude"
+
+//add id
+newDiv.id= "dude1"
+
+// add attribute
+newDiv.setAttribute('title','HEllo Div') 
+
+//create a text node
+var newDivText=document.createTextNode('HEllo World')
+// add text to Div
+newDiv.appendChild(newDivText)
+var container=document.querySelector('li .container');
+var h1=document.querySelector ('li h2')
+console.log(newDiv)
+newDiv.style.fontSize='10px'
+container.insertBefore(newDiv,h2)
