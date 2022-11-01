@@ -391,31 +391,179 @@
 
 // Understand Call Apply and Bind 
 // 1
-obj ={num:2}
-var addToThis=function(a){
-    return this.num+a ;
-}
-const Add=addToThis.call(obj,5)
-console.log(Add)
+// obj ={num:2}
+// var addToThis=function(a){
+//     return this.num+a ;
+// }
+// const Add=addToThis.call(obj,5)
+// console.log(Add)
 
-// 2
-const arr=[10]
-const Add1=addToThis.apply(obj,arr)
-console.log(Add1)
-// 3
-obj ={num:2}
-var addToThis=function(a){
-    return this.num+a ;
-}
-const bound=addToThis.bind(obj)
-console.log(bound(10))
+// // 2
+// const arr=[10]
+// const Add1=addToThis.apply(obj,arr)
+// console.log(Add1)
+// // 3
+// obj ={num:2}
+// var addToThis=function(a){
+//     return this.num+a ;
+// }
+// const bound=addToThis.bind(obj)
+// console.log(bound(10))
 
-// 4
-var student ={
-    age:20
+// // 4
+// var student ={
+//     age:20
+// }
+// function print(){
+//     return this.age
+// }
+// const result=print.bind(student)
+// console.log(result())
+
+
+// Advance closures 
+// 1)
+
+// function y(){
+//     var a=10
+// setTimeout(() => console.log(a), 1000)
+// console.log('Done Coding')
+// }
+// y(); //==>first set timer take the callback function then when the timer expire then execute that javaScript doesNot wait for that so print Dove Coding first.
+
+
+ 
+// 2)
+// function y(){
+// setTimeout(() => console.log(a), 0)
+// console.log('Done Coding')
+// }
+// y();
+
+// 3)
+
+// function y(){
+// for(var i=1;i<=5;i++){
+// setTimeout(() => console.log(i ), i * 1000)
+// }
+// console.log('Done Coding')
+// }
+// y();
+
+// function y(){
+// for(let i=1;i<=5;i++){
+// setTimeout(() => console.log(i ), i * 1000)
+// }
+// console.log('Done Coding')
+// }
+// y();
+
+// function y(){
+// for(var i=1;i<=5;i++){
+// function close(i){
+//     setTimeout(() => console.log(i ), i * 1000)
+// }
+// close(i)
+// }
+// console.log('Done Coding')
+// }
+// y();
+
+// function y(){
+//     for(var i=0;i<6;i++){
+//         console.log(i)
+//     }
+// }
+// y()
+
+// var count=0
+// const name = (arr)=>{
+//     if(count===0){
+//         return ()=>{
+//             console.log('Hello '+ arr[count])
+//             count++
+//         }
+//     }else{
+//         return()=>{
+//             console.log('Hello '+ arr[count])
+//         }
+//     }
+// }
+// let fun = name(["Ram","Shyam"]);
+// fun()// Print Hello Ram
+// fun()//print Hello Shyam
+// const name=(arr)=>{
+//     let count=0;
+//     return ()=>{
+//         console.log('Hello '+arr[count])
+//         count++
+//     }
+// }
+// let fun=name(['Ram',"Shyam"])
+// fun()
+// fun()
+
+// FIRST CLASS FUNCTIONS 🔥ft. Anonymous Functions
+
+
+// a()//('inside a')
+// b()// b is not function type error
+// //function statement
+// function a(){
+// console.log('inside a');
+// }
+// //function expression
+// var b = function (){
+// console.log('inside b');
+// }
+ // function declaration it also function statement 
+
+ // Anonymous function // function without name 
+//  function () {
+//     console.log("hello")
+//  }
+
+//named function expression 
+// var b = function xyz(){
+//     console.log('inside b');
+//     }
+//     b();
+//     xyz();
+
+// different between argument and perameter 
+// var b= function (param1,param2){
+
+// }
+// b(2,3)//2 and 3 passing the value in function are argument and param1 , param2 (lable)are parameter
+
+// First class function the ability to use like value function as well as use as knons as first class function .and pass the agrument to the another function can be return fron the function is this ability is know as irst class function . it is programmig concept of all progamming languages.
+// var b = function (a){
+//         return function (){
+
+//         }
+//         }
+//        console.log(b())
+    
+
+// currying in javaSCript 
+// function a(x){
+//     return (b)=>{
+//        console.log(x+b)
+//     }
+// }
+// const z=a(10)
+// console.log(z(5))
+// a(5)(10)
+function makeTea(){
+    console.log("milk added")
+    return ()=>{
+        console.log('boild milk')
+        return ()=>{
+            console.log('add tea leaves')
+            return ()=>{
+                console.log("let's take a tea")
+            }
+        }
+    }
 }
-function print(){
-    return this.age
-}
-const result=print.bind(student)
-console.log(result())
+makeTea()()()()
