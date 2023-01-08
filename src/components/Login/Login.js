@@ -5,32 +5,30 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
-  if(action.type==="USER_INPUT"){
-    return { value: action.val,isValid:action.val.includes('@') }
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
   }
-  if(action.type==="INPUT_BLUR"){
-    return {value:state.value,isValid:state.value.includes('@')}
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
   }
   return { value: "", isValid: false };
-
 };
 
-const passwordRedcer = (state, action)=>{
-  if(action.type==="USER_INPUT"){
-    return { value: action.val,isValid:action.val.trim().length > 6 }
+const passwordRedcer = (state, action) => {
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.trim().length > 6 };
   }
-  if(action.type==="INPUT_BLUR"){
-    return {value:state.value,isValid:state.value.trim().length > 6}
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.trim().length > 6 };
   }
   return { value: "", isValid: false };
-
-}
+};
 
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredCollage, setEnteredCollage] = useState("");
-  const [collageIsValid,setCollageIsValid] = useState();
+  const [collageIsValid, setCollageIsValid] = useState();
   // const [passwordIsValid, setPasswordIsValid] = useState();
   // const [emailIsValid, setEmailIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
@@ -39,46 +37,40 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
-  const [passwordState, dispatchPassword]=useReducer(passwordRedcer, {
+  const [passwordState, dispatchPassword] = useReducer(passwordRedcer, {
     value: "",
     isValid: null,
-  })
+  });
 
   useEffect(() => {
     console.log("EFFECT RUNNING");
   }, []);
 
-  const {isValid:emailIsValid}=emailState
-  const {isValid:passwordIsValid}=passwordState
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
 
-  useEffect(()=>{
-    console.log('checking form validity!')
-   const identifier= setTimeout(()=>{
-      setFormIsValid(
-        emailIsValid && passwordIsValid
-      );
-    },500)
+  useEffect(() => {
+    console.log("checking form validity!");
+    const identifier = setTimeout(() => {
+      setFormIsValid(emailIsValid && passwordIsValid);
+    }, 500);
 
-   return ()=>{
-    console.log('CleanUp!')
-    clearTimeout(identifier)
-   };
-  },[emailIsValid,passwordIsValid])
+    return () => {
+      console.log("CleanUp!");
+      clearTimeout(identifier);
+    };
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
-    dispatchEmail({type:"USER_INPUT",val:event.target.value})
-    setFormIsValid(
-      event.target.value.includes("@") && passwordState.isValid
-    );
+    dispatchEmail({ type: "USER_INPUT", val: event.target.value });
+    setFormIsValid(event.target.value.includes("@") && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
-    dispatchPassword({type:'USER_INPUT',val:event.target.value})
-    setFormIsValid(
-      emailState.isValid && passwordState.isValid
-    );
+    dispatchPassword({ type: "USER_INPUT", val: event.target.value });
+    setFormIsValid(emailState.isValid && passwordState.isValid);
   };
   const collageChangeHandler = (event) => {
     setEnteredCollage(event.target.value);
@@ -86,12 +78,12 @@ const Login = (props) => {
 
   const validateEmailHandler = () => {
     // setEmailIsValid(emailState.isValid);
-    dispatchEmail({type:'INPUT_BLUR'})
+    dispatchEmail({ type: "INPUT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
     // setPasswordIsValid(enteredPassword.trim().length > 6);
-    dispatchPassword({type:'INPUT_BLUR'})
+    dispatchPassword({ type: "INPUT_BLUR" });
   };
   const validateCollageHandler = () => {
     setCollageIsValid(enteredCollage.trim().length);
